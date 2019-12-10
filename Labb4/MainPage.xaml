@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModel="clr-namespace:Labb4" mc:Ignorable="d" x:Class="Labb4.MainPage"
+             Title="Labb4">
+
+     <ContentPage.BindingContext>
+    <viewModel:MainViewModel/>
+  </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Previous"
+                     Command="{Binding PrevCommand}"/>
+        <ToolbarItem Text="Next"
+                     Command="{Binding NextCommand}"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical"
+                 VerticalOptions="Center"
+                 Margin="20"
+                 Spacing="20"
+                 >
+
+            <Image
+                Source="{Binding CurrentCountry.PictureUrl}"
+                HeightRequest="200"
+                Aspect="AspectFit"
+                />
+
+            <Label Text="{Binding CurrentCountry.Name, StringFormat='Current country: {0}'}"
+               HorizontalOptions="Center"
+               />
+            <Label Text="{Binding CurrentCountry.Currency, StringFormat='Currency: {0}'}"
+               HorizontalOptions="Center"
+               />
+            <Label Text="{Binding CurrentCountry.Population, StringFormat='Population: {0}'}"
+               HorizontalOptions="Center"
+               />
+            <Label Text="{Binding CurrentCountry.Description}"
+                   HorizontalOptions="StartAndExpand"
+               />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
